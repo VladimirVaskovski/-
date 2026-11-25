@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>УМК по физике</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f0f4f8;
+    color: #1a202c;
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+  header p { opacity: 0.9; font-size: 1.05rem; }
+
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  /* ===== Главная: аккордеон ===== */
+  .home-view .accordion-item {
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .home-view .accordion-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+  .accordion-header {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e3a8a;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .accordion-header:hover { background: #f8fafc; }
+  .accordion-header.active { background: #eff6ff; }
+
+  .accordion-icon {
+    font-size: 1.4rem;
+    transition: transform 0.3s;
+    color: #3b82f6;
+  }
+  .accordion-header.active .accordion-icon { transform: rotate(90deg); }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #fbfdff;
+  }
+  .accordion-content.open { max-height: 1000px; }
+
+  .subsections {
+    list-style: none;
+    padding: 8px 24px 20px;
+  }
+  .subsections li {
+    padding: 12px 16px;
+    margin: 6px 0;
+    background: #fff;
+    border-left: 4px solid #3b82f6;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .subsections li:hover {
+    background: #eff6ff;
+    border-left-color: #1e3a8a;
+    transform: translateX(4px);
+  }
+  .subsections li a {
+    color: #2d3748;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+  }
+
+  /* ===== Внутренние страницы ===== */
+  .page-view { display: none; }
+  .page-view.active { display: block; }
+  .home-view { display: none; }
+  .home-view.active { display: block; }
+
+  .breadcrumbs {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #718096;
+  }
+  .breadcrumbs a { color: #3b82f6; text-decoration: none; cursor: pointer; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .breadcrumbs span { margin: 0 6px; }
+
+  .page-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    min-height: 300px;
+  }
+  .page-content h2 {
+    color: #1e3a8a;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #eff6ff;
+  }
+  .placeholder-text {
+    color: #718096;
+    font-style: italic;
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #718096;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Учебно-методический комплекс по физике</h1>
+  <p>Теория · Практика · Контроль знаний · Справочные материалы</p>
+</header>
+
+<div class="container">
+
+  <!-- ================= ГЛАВНАЯ ================= -->
+  <div id="home" class="home-view">
+
+    <!-- Теоретический -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span>📘 Теоретический раздел</span>
+        <span class="accordion-icon">▶</span>
+      </div>
+      <div class="accordion-content">
+        <ul class="subsections">
+          <li><a href="#theory-mkt">Молекулярно-кинетическая теория</a></li>
+          <li><a href="#theory-thermo">Термодинамика</a></li>
+          <li><a href="#theory-electricity">Электричество</a></li>
+          <li><a href="#theory-magnetism">Магнетизм</a></li>
+          <li><a href="#theory-oscillations">Колебания и волны</a></li>
+          <li><a href="#theory-optics">Оптика</a></li>
+          <li><a href="#theory-quantum">Квантовая физика</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Практический -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span>🧪 Практический раздел</span>
+        <span class="accordion-icon">▶</span>
+      </div>
+      <div class="accordion-content">
+        <ul class="subsections">
+          <li><a href="#practice-labs">Лабораторные работы</a></li>
+          <li><a href="#practice-tasks">Задачи для самостоятельного решения</a></li>
+          <li><a href="#practice-examples">Примеры решения задач</a></li>
+          <li><a href="#practice-workshop">Физический практикум</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Контроль знаний -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span>📝 Контроль знаний</span>
+        <span class="accordion-icon">▶</span>
+      </div>
+      <div class="accordion-content">
+        <ul class="subsections">
+          <li><a href="#tests">Тесты по темам</a></li>
+          <li><a href="#control-works">Контрольные работы</a></li>
+          <li><a href="#self-check">Задания для самопроверки</a></li>
+          <li><a href="#exams">Подготовка к экзаменам</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Вспомогательная информация -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span>📚 Вспомогательная информация</span>
+        <span class="accordion-icon">▶</span>
+      </div>
+      <div class="accordion-content">
+        <ul class="subsections">
+          <li><a href="#formulas">Формулы и константы</a></li>
+          <li><a href="#glossary">Словарь терминов</a></li>
+          <li><a href="#units">Единицы измерения (СИ)</a></li>
+          <li><a href="#references">Полезные ссылки и литература</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= СТРАНИЦЫ ================= -->
+
+  <!-- Теоретический -->
+  <div id="theory-mkt" class="page-view" data-crumb="Теоретический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Теоретический раздел<span>→</span>Молекулярно-кинетическая теория
+    </div>
+    <div class="page-content">
+      <h2>Молекулярно-кинетическая теория</h2>
+      <p class="placeholder-text">Здесь будет размещён теоретический материал по теме «Молекулярно-кинетическая теория».<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="theory-thermo" class="page-view" data-crumb="Теоретический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Теоретический раздел<span>→</span>Термодинамика
+    </div>
+    <div class="page-content">
+      <h2>Термодинамика</h2>
+      <p class="placeholder-text">Здесь будет размещён теоретический материал по теме «Термодинамика».<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="theory-electricity" class="page-view" data-crumb="Теоретический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Теоретический раздел<span>→</span>Электричество
+    </div>
+    <div class="page-content">
+      <h2>Электричество</h2>
+      <p class="placeholder-text">Здесь будет размещён теоретический материал по теме «Электричество».<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="theory-magnetism" class="page-view" data-crumb="Теоретический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Теоретический раздел<span>→</span>Магнетизм
+    </div>
+    <div class="page-content">
+      <h2>Магнетизм</h2>
+      <p class="placeholder-text">Здесь будет размещён теоретический материал по теме «Магнетизм».<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="theory-oscillations" class="page-view" data-crumb="Теоретический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Теоретический раздел<span>→</span>Колебания и волны
+    </div>
+    <div class="page-content">
+      <h2>Колебания и волны</h2>
+      <p class="placeholder-text">Здесь будет размещён теоретический материал по теме «Колебания и волны».<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="theory-optics" class="page-view" data-crumb="Теоретический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Теоретический раздел<span>→</span>Оптика
+    </div>
+    <div class="page-content">
+      <h2>Оптика</h2>
+      <p class="placeholder-text">Здесь будет размещён теоретический материал по теме «Оптика».<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="theory-quantum" class="page-view" data-crumb="Теоретический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Теоретический раздел<span>→</span>Квантовая физика
+    </div>
+    <div class="page-content">
+      <h2>Квантовая физика</h2>
+      <p class="placeholder-text">Здесь будет размещён теоретический материал по теме «Квантовая физика».<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <!-- Практический -->
+  <div id="practice-labs" class="page-view" data-crumb="Практический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Практический раздел<span>→</span>Лабораторные работы
+    </div>
+    <div class="page-content">
+      <h2>Лабораторные работы</h2>
+      <p class="placeholder-text">Здесь будет размещён материал по лабораторным работам.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="practice-tasks" class="page-view" data-crumb="Практический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Практический раздел<span>→</span>Задачи для самостоятельного решения
+    </div>
+    <div class="page-content">
+      <h2>Задачи для самостоятельного решения</h2>
+      <p class="placeholder-text">Здесь будет размещён материал с задачами для самостоятельного решения.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="practice-examples" class="page-view" data-crumb="Практический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Практический раздел<span>→</span>Примеры решения задач
+    </div>
+    <div class="page-content">
+      <h2>Примеры решения задач</h2>
+      <p class="placeholder-text">Здесь будет размещён материал с примерами решения задач.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="practice-workshop" class="page-view" data-crumb="Практический раздел">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Практический раздел<span>→</span>Физический практикум
+    </div>
+    <div class="page-content">
+      <h2>Физический практикум</h2>
+      <p class="placeholder-text">Здесь будет размещён материал по физическому практикуму.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <!-- Контроль знаний -->
+  <div id="tests" class="page-view" data-crumb="Контроль знаний">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Контроль знаний<span>→</span>Тесты по темам
+    </div>
+    <div class="page-content">
+      <h2>Тесты по темам</h2>
+      <p class="placeholder-text">Здесь будут размещены тесты по темам.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="control-works" class="page-view" data-crumb="Контроль знаний">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Контроль знаний<span>→</span>Контрольные работы
+    </div>
+    <div class="page-content">
+      <h2>Контрольные работы</h2>
+      <p class="placeholder-text">Здесь будут размещены контрольные работы.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="self-check" class="page-view" data-crumb="Контроль знаний">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Контроль знаний<span>→</span>Задания для самопроверки
+    </div>
+    <div class="page-content">
+      <h2>Задания для самопроверки</h2>
+      <p class="placeholder-text">Здесь будут размещены задания для самопроверки.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="exams" class="page-view" data-crumb="Контроль знаний">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Контроль знаний<span>→</span>Подготовка к экзаменам
+    </div>
+    <div class="page-content">
+      <h2>Подготовка к экзаменам</h2>
+      <p class="placeholder-text">Здесь будет размещён материал для подготовки к экзаменам.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <!-- Вспомогательная информация -->
+  <div id="formulas" class="page-view" data-crumb="Вспомогательная информация">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Вспомогательная информация<span>→</span>Формулы и константы
+    </div>
+    <div class="page-content">
+      <h2>Формулы и константы</h2>
+      <p class="placeholder-text">Здесь будут размещены справочные формулы и физические константы.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="glossary" class="page-view" data-crumb="Вспомогательная информация">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Вспомогательная информация<span>→</span>Словарь терминов
+    </div>
+    <div class="page-content">
+      <h2>Словарь терминов</h2>
+      <p class="placeholder-text">Здесь будет размещён словарь физических терминов.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="units" class="page-view" data-crumb="Вспомогательная информация">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Вспомогательная информация<span>→</span>Единицы измерения (СИ)
+    </div>
+    <div class="page-content">
+      <h2>Единицы измерения (СИ)</h2>
+      <p class="placeholder-text">Здесь будет размещена информация о единицах измерения СИ.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+  <div id="references" class="page-view" data-crumb="Вспомогательная информация">
+    <div class="breadcrumbs">
+      <a onclick="goHome()">Главная</a><span>→</span>
+      Вспомогательная информация<span>→</span>Полезные ссылки и литература
+    </div>
+    <div class="page-content">
+      <h2>Полезные ссылки и литература</h2>
+      <p class="placeholder-text">Здесь будут размещены полезные ссылки и список литературы.<br>Страница готова к наполнению.</p>
+    </div>
+    <a class="back-link" onclick="goHome()">← Вернуться на главную</a>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 УМК по физике
+</footer>
+
+<script>
+  // Аккордеон
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      const isOpen = content.classList.contains('open');
+      content.classList.toggle('open', !isOpen);
+      header.classList.toggle('active', !isOpen);
+    });
+  });
+
+  // Роутер по хэшу
+  function showView() {
+    const hash = window.location.hash.replace('#', '');
+    const home = document.getElementById('home');
+    document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+
+    if (!hash || hash === 'home') {
+      home.classList.add('active');
+      window.scrollTo(0, 0);
+    } else {
+      const target = document.getElementById(hash);
+      if (target && target.classList.contains('page-view')) {
+        home.classList.remove('active');
+        target.classList.add('active');
+        window.scrollTo(0, 0);
+      } else {
+        // Неизвестный якорь — показываем главную
+        home.classList.add('active');
+      }
+    }
+  }
+
+  function goHome() {
+    window.location.hash = '';
+    // Если хэш уже пустой — принудительно обновить вид
+    showView();
+  }
+
+  window.addEventListener('hashchange', showView);
+  window.addEventListener('DOMContentLoaded', showView);
+</script>
+
+</body>
+</html>
